@@ -1,8 +1,7 @@
 (function(){
-  var FPS = 10;
-  var app = angular.module("testApp", ["testAppFilters"]);
+  var app = angular.module("testApp", ["testAppFilters", "testAppDirectives"]);
 
-  app.controller("ProgressCtrl", ["$scope", "$interval", function($scope, $interval){
+  app.controller("ProgressCtrl", ["$scope", function($scope){
     $scope.game = {
       score: 0
     };
@@ -10,26 +9,34 @@
     $scope.widgets = 0;
     $scope.now = Date.now();
 
-    $interval(function(){
-      $scope.now = Date.now();
-    }, 1000 / FPS);
+    $scope.products = [
+      {
+        name: "First Bar",
+        maxProgress: 3,
+        value: 1
+      },
+      {
+        name: "Second Bar",
+        maxProgress: 5,
+        value: 10
+      }
+    ];
   }]);
 
-  app.controller("TaskCtrl", ["$scope", "$attrs", function($scope, $attrs){
+  app.controller("TaskCtrl", ["$scope", function($scope){
     $scope.progress = 0;
-    $scope.maxProgress = $attrs.max;
 
     $scope.$watch("now", function(newValue, oldValue) {
       var diffMillis = newValue - oldValue;
-      $scope.progress += diffMillis * 0.01;
-      if ($scope.progress > $scope.maxProgress) {
-        $scope.game.score += Math.floor($scope.progress / $scope.maxProgress);
-        $scope.progress = $scope.progress % $scope.maxProgress;
+      $scope.progress += diffMillis * 0.001;
+      if ($scope.progress > $scope.product.maxProgress) {
+        $scope.game.score += Math.floor($scope.progress / $scope.product.maxProgress) * $scope.product.value;
+        $scope.progress = $scope.progress % $scope.product.maxProgress;
       }
     });
 
     $scope.percent = function() {
-      return $scope.progress / $scope.maxProgress * 100;
+      return $scope.progress / $scope.product.maxProgress * 100;
     };
   }]);
 }());

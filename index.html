@@ -5,24 +5,32 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body ng-app="testApp">
-    <div ng-controller="ProgressCtrl">
-      Completed Bars: {{game.score}}
-      <div class="box" ng-controller="TaskCtrl" max=40>
+    <div ng-controller="ProgressCtrl" tick>
+      Score: {{game.score}}
+      <div ng-repeat="product in products">
+        {{product.name}}
+        <div class="box" ng-controller="TaskCtrl" product={{product}}>
+          <div class="bar" style="width: {{percent() | progressFilter}}">
+            <span>{{percent() | progressFilter}}</span>
+          </div>
+        </div>
+      </div>
+<!--      <div class="box" ng-controller="TaskCtrl" max=4>
         <div class="bar" style="width: {{percent() | progressFilter}}">
           <span>{{percent() | progressFilter}}</span>
         </div>
       </div>
-      <div class="box" ng-controller="TaskCtrl" max=100>
+      <div class="box" ng-controller="TaskCtrl" max=10>
         <div class="bar" style="width: {{percent() | progressFilter}}">
           <span>{{percent() | progressFilter}}</span>
         </div>
       </div>
-    </div>
+    </div> -->
     <script src="javascript/angular.min.js">
     </script>
     <script src="javascript/app.js">
     </script>
-    <script src="javascript/filters.js">
-    </script>
+    <script src="javascript/filters.js"></script>
+    <script src="javascript/directives.js"></script>
   </body>
 </html>
