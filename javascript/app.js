@@ -15,9 +15,9 @@
     }, 1000 / FPS);
   }]);
 
-  app.controller("TaskCtrl", ["$scope", function($scope){
+  app.controller("TaskCtrl", ["$scope", "$attrs", function($scope, $attrs){
     $scope.progress = 0;
-    $scope.maxProgress = 100;
+    $scope.maxProgress = $attrs.max;
 
     $scope.$watch("now", function(newValue, oldValue) {
       var diffMillis = newValue - oldValue;

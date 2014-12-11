@@ -7,7 +7,12 @@
   <body ng-app="testApp">
     <div ng-controller="ProgressCtrl">
       Completed Bars: {{game.score}}
-      <div class="box" ng-controller="TaskCtrl">
+      <div class="box" ng-controller="TaskCtrl" max=40>
+        <div class="bar" style="width: {{percent() | progressFilter}}">
+          <span>{{percent() | progressFilter}}</span>
+        </div>
+      </div>
+      <div class="box" ng-controller="TaskCtrl" max=100>
         <div class="bar" style="width: {{percent() | progressFilter}}">
           <span>{{percent() | progressFilter}}</span>
         </div>
