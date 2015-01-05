@@ -19,6 +19,11 @@
         name: "Second Bar",
         maxProgress: 5,
         value: 10
+      },
+      {
+        name: "Bar Bar Bar",
+        maxProgress: 100,
+        value: 100
       }
     ];
   }]);
