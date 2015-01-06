@@ -1,4 +1,4 @@
-angular.module("testAppDirectives", []).directive("tick", function() {
+angular.module("testApp").directive("tick", function() {
   return {
     controller: function($scope, $interval) {
       var FPS = 10;
