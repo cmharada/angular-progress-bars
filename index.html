@@ -1,20 +1,23 @@
 <html>
   <head>
-    <title>Angular Test</title>
+    <title>Angular Farm</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
-  <body ng-app="testApp">
-    <div class="main" ng-controller="ProgressCtrl" tick>
-      Score: {{game.score}}
-      <div ng-repeat="product in products">
-        {{product.name}}
-        <div class="progress" ng-controller="TaskCtrl" product={{product}}>
-          <div class="bar" style="width: {{percent() | progressBarFilter}}">
-            <span>{{percent() | progressFilter}}</span>
+  <body>
+    <div ng-app="angFarm">
+      <div class="main" ng-controller="ProgressCtrl" tick>
+        Money: {{game.money | currency : $ : 2}}
+        <div ng-repeat="product in products">
+          {{product.name}}
+          <div class="progress" ng-controller="TaskCtrl" product={{product}}>
+            <div class="bar" style="width: {{percent() | progressBarFilter}}" ng-click="harvest()">
+              <span>{{percent() | progressFilter}}</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     <script src="lib/javascript/angular.min.js">
     </script>
     <script src="javascript/app.js"></script>

@@ -1,4 +1,4 @@
-angular.module("testApp").directive("tick", function() {
+angular.module("angFarm").directive("tick", function() {
   return {
     controller: function($scope, $interval) {
       var FPS = 10;

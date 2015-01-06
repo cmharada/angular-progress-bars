@@ -1,7 +1,11 @@
-angular.module("testApp")
+angular.module("angFarm")
   .filter("progressFilter", function() {
     return function(progress) {
-      return Math.floor(progress) + "%";
+      if (progress < 100) {
+        return Math.floor(progress) + "%";
+      } else {
+        return "100% (click to harvest)";
+      }
     };
   })
   .filter("progressBarFilter", function() {

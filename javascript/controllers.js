@@ -1,7 +1,7 @@
-angular.module("testApp")
+angular.module("angFarm")
   .controller("ProgressCtrl", ["$scope", function($scope){
     $scope.game = {
-      score: 0
+      money: 10
     };
     $scope.progress = 0;
     $scope.widgets = 0;
@@ -32,12 +32,18 @@ angular.module("testApp")
       var diffMillis = newValue - oldValue;
       $scope.progress += diffMillis * 0.001;
       if ($scope.progress > $scope.product.maxProgress) {
-        $scope.game.score += Math.floor($scope.progress / $scope.product.maxProgress) * $scope.product.value;
-        $scope.progress = $scope.progress % $scope.product.maxProgress;
+        $scope.progress = $scope.product.maxProgress;
       }
     });
 
     $scope.percent = function() {
       return $scope.progress / $scope.product.maxProgress * 100;
+    };
+
+    $scope.harvest = function() {
+      if ($scope.progress >= $scope.product.maxProgress) {
+        $scope.progress = 0;
+        $scope.game.money += $scope.product.value;
+      }
     };
   }]);
