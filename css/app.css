@@ -3,6 +3,23 @@
   margin: auto;
 }
 
+.plot {
+  display: inline-block;
+  box-sizing: border-box;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  height: 100px;
+  width: 100px;
+  float: left;
+}
+
+.land {
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  width: 501px;
+  overflow: auto;
+}
+
 .bar {
   background: red;
   height: 100%;

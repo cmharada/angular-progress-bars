@@ -8,11 +8,13 @@
     <div ng-app="angFarm">
       <div class="main" ng-controller="ProgressCtrl" tick>
         Money: {{game.money | currency : $ : 2}}
-        <div ng-repeat="product in products">
-          {{product.name}}
-          <div class="progress" ng-controller="TaskCtrl" product={{product}}>
-            <div class="bar" style="width: {{percent() | progressBarFilter}}" ng-click="harvest()">
-              <span>{{percent() | progressFilter}}</span>
+        <div class="land">
+          <div ng-repeat="plot in plots">
+            <div class="plot" ng-controller="PlotCtrl">
+              <div class="bar" style="width: {{percent() | progressBarFilter}}"
+                ng-click="clickPlot()">
+                <span>{{percent() | progressFilter}}</span>
+              </div>
             </div>
           </div>
         </div>
